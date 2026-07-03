@@ -1,0 +1,10 @@
+{
+  // Static-asset Worker serving the exported Next.js frontend.
+  // Deploy: npm run build (produces ./out) then npx wrangler deploy
+  "name": "mkurdi-ops-web",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  }
+}

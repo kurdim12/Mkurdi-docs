@@ -19,8 +19,8 @@
   "vars": {
     "MODEL_EXTRACT": "google/gemini-2.5-flash",
     "MODEL_CHAT": "google/gemini-2.5-flash",
-    // "url" in production after deploy — base64 for local dev (OpenRouter can't reach localhost)
-    "PARSE_MODE": "base64",
-    "PUBLIC_API_URL": "http://localhost:8787"
+    // "url" in production — switch back to "base64" for local dev (OpenRouter can't reach localhost)
+    "PARSE_MODE": "url",
+    "PUBLIC_API_URL": "https://mkurdi-docs.abdalrhmankurdi12.workers.dev"
   }
 }

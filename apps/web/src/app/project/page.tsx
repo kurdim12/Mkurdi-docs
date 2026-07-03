@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import {
   apiGet,
   apiUpload,
@@ -67,9 +67,8 @@ function StatusChip({ status }: { status: string }) {
   );
 }
 
-export default function ProjectPage() {
-  const params = useParams<{ id: string }>();
-  const projectId = params.id;
+function ProjectView() {
+  const projectId = useSearchParams().get('id') ?? '';
 
   const [project, setProject] = useState<Project | null>(null);
   const [guarantees, setGuarantees] = useState<Guarantee[]>([]);
@@ -157,7 +156,7 @@ export default function ProjectPage() {
           </div>
         </div>
         <Link
-          href={`/projects/${projectId}/chat`}
+          href={`/project/chat?id=${projectId}`}
           className="rounded-md bg-ink px-4 py-2 text-sm font-semibold text-card"
         >
           اسأل الوثائق
@@ -280,5 +279,13 @@ export default function ProjectPage() {
         </section>
       </div>
     </div>
+  );
+}
+
+export default function ProjectPage() {
+  return (
+    <Suspense fallback={<div className="text-sm text-muted">جارِ التحميل…</div>}>
+      <ProjectView />
+    </Suspense>
   );
 }

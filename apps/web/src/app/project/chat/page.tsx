@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { apiPost } from '@/lib/api';
 
 interface Source {
@@ -27,9 +27,8 @@ const EXAMPLES = [
   'What does the contract say about liquidated damages?',
 ];
 
-export default function ChatPage() {
-  const params = useParams<{ id: string }>();
-  const projectId = params.id;
+function ChatView() {
+  const projectId = useSearchParams().get('id') ?? '';
 
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
@@ -70,7 +69,7 @@ export default function ChatPage() {
     <div className="mx-auto flex h-[calc(100vh-4rem)] max-w-3xl flex-col">
       <header className="flex items-center justify-between border-b border-line pb-4">
         <h1 className="text-xl font-bold">اسأل الوثائق</h1>
-        <Link href={`/projects/${projectId}`} className="text-sm text-muted hover:text-ink">
+        <Link href={`/project?id=${projectId}`} className="text-sm text-muted hover:text-ink">
           ← العودة إلى المشروع
         </Link>
       </header>
@@ -155,5 +154,13 @@ export default function ChatPage() {
         </button>
       </form>
     </div>
+  );
+}
+
+export default function ChatPage() {
+  return (
+    <Suspense fallback={<div className="text-sm text-muted">جارِ التحميل…</div>}>
+      <ChatView />
+    </Suspense>
   );
 }

@@ -154,7 +154,7 @@ export default function HomePage() {
           {brief?.letters.map((l) => (
             <Link
               key={l.id}
-              href={`/projects/${l.project_id}`}
+              href={`/project?id=${l.project_id}`}
               className="flex items-center gap-4 rounded-lg border border-line bg-card p-4 hover:border-amber"
             >
               <Countdown days={l.days_left} />
@@ -175,7 +175,7 @@ export default function HomePage() {
           {brief?.guarantees.map((g) => (
             <Link
               key={g.id}
-              href={`/projects/${g.project_id}`}
+              href={`/project?id=${g.project_id}`}
               className="flex items-center gap-4 rounded-lg border border-line bg-card p-4 hover:border-amber"
             >
               <Countdown days={g.days_left} />
@@ -198,7 +198,7 @@ export default function HomePage() {
           {brief?.ipcs.map((i) => (
             <Link
               key={i.id}
-              href={`/projects/${i.project_id}`}
+              href={`/project?id=${i.project_id}`}
               className="flex items-center gap-4 rounded-lg border border-line bg-card p-4 hover:border-ledger"
             >
               <div className="flex w-16 shrink-0 flex-col items-center justify-center rounded-lg bg-ledger-soft py-2 text-ledger">
@@ -236,7 +236,7 @@ export default function HomePage() {
           {projects?.map((p) => (
             <Link
               key={p.id}
-              href={`/projects/${p.id}`}
+              href={`/project?id=${p.id}`}
               className="rounded-lg border border-line bg-card p-5 hover:border-amber"
             >
               <div className="font-bold" dir="auto">
