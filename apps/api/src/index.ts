@@ -25,6 +25,19 @@ app.use('*', async (c, next) => {
 
 app.get('/', (c) => c.json({ name: 'MKurdi Operations API', ok: true }));
 
+// Ops sanity check: reports which secrets the Worker can actually see
+// (presence only — never values).
+app.get('/health', (c) =>
+  c.json({
+    ok: true,
+    parse_mode: c.env.PARSE_MODE,
+    secrets: {
+      OPENROUTER_API_KEY: Boolean(c.env.OPENROUTER_API_KEY),
+      SIGNING_SECRET: Boolean(c.env.SIGNING_SECRET),
+    },
+  })
+);
+
 app.route('/projects', projects);
 app.route('/', documents);
 app.route('/', files);
