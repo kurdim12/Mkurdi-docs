@@ -1,5 +1,5 @@
 {
-  "name": "mkurdi-ops-api",
+  "name": "mkurdi-docs",
   "main": "src/index.ts",
   "compatibility_date": "2025-09-01",
   "compatibility_flags": ["nodejs_compat"],
