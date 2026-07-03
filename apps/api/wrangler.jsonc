@@ -7,7 +7,7 @@
     {
       "binding": "DB",
       "database_name": "mkurdi-ops-db",
-      "database_id": "REPLACE_AFTER_wrangler_d1_create"
+      "database_id": "7639d654-0f88-4084-88f1-7b3aaa191f34"
     }
   ],
   "r2_buckets": [{ "binding": "DOCS", "bucket_name": "mkurdi-ops-docs" }],
