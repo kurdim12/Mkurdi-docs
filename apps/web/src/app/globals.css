@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  direction: rtl;
+  text-align: right;
+  @apply bg-paper text-ink font-arabic;
+}
+
+/* Reference numbers, amounts, page counts — anything numeric or Latin — render inside this. */
+.ltr-data {
+  direction: ltr;
+  unicode-bidi: isolate;
+  @apply font-mono;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "mkurdi-ops-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-09-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "mkurdi-ops-db",
+      "database_id": "REPLACE_AFTER_wrangler_d1_create"
+    }
+  ],
+  "r2_buckets": [{ "binding": "DOCS", "bucket_name": "mkurdi-ops-docs" }],
+  "vectorize": [{ "binding": "VEC", "index_name": "mkurdi-ops-chunks" }],
+  "ai": { "binding": "AI" },
+  "workflows": [
+    { "binding": "INGEST", "name": "mkurdi-ops-ingest", "class_name": "IngestWorkflow" }
+  ],
+  "vars": {
+    "MODEL_EXTRACT": "google/gemini-2.5-flash",
+    "MODEL_CHAT": "google/gemini-2.5-flash",
+    // "url" in production after deploy — base64 for local dev (OpenRouter can't reach localhost)
+    "PARSE_MODE": "base64",
+    "PUBLIC_API_URL": "http://localhost:8787"
+  }
+}

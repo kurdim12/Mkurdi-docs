@@ -1,0 +1,14 @@
+{
+  "name": "mkurdi-operations",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:api": "npm run dev --workspace=api",
+    "dev:web": "npm run dev --workspace=web",
+    "deploy:api": "npm run deploy --workspace=api",
+    "db:apply": "npm run db:apply --workspace=api",
+    "db:apply:remote": "npm run db:apply:remote --workspace=api"
+  }
+}
